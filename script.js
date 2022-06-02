@@ -35,6 +35,7 @@ scissors.addEventListener("click", () => play("scissors"));
 newGame.addEventListener("click", () => setNewGame());
 
 function play(pgMove) {
+    debugger
     if (endgame) return;
     if (pgMove == R.move && R.count == 3) return;
     let pcMove = opt[Math.floor(Math.random()*3)];
@@ -91,10 +92,10 @@ function play(pgMove) {
         C["scissors"]++;
     }
     if (pgMove == R.move) 
-        count++;
+        R.count++;
     else {
         R.move = pgMove;
-        count = 1;
+        R.count = 1;
     }
 }
 
