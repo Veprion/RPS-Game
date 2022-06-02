@@ -15,6 +15,10 @@ body {
     align-items: center;
 }
 
+button:hover{
+    border-color: rebeccapurple;
+}
+
 .grid {
     display: grid;
     width: clamp(100px, 68%, 700px);

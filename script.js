@@ -28,6 +28,16 @@ const paper = document.getElementById("b1");
 const scissors = document.getElementById("b2");
 const newGame = document.getElementById("newgame");
 const battleF = document.getElementById("p0");
+const specPR = document.getElementById("pr");
+const specPP = document.getElementById("pp");
+const specPS = document.getElementById("ps");
+const specCR = document.getElementById("cr");
+const specCP = document.getElementById("cp");
+const specCS = document.getElementById("cs");
+const pcs = document.getElementById("pcs");
+const lvl = document.getElementById("lvl");
+const mtc = document.getElementById("mtc");
+
 
 rock.addEventListener("click", () => play("rock"));
 paper.addEventListener("click", () => play("paper"));
@@ -35,24 +45,26 @@ scissors.addEventListener("click", () => play("scissors"));
 newGame.addEventListener("click", () => setNewGame());
 
 function play(pgMove) {
-    debugger
     if (endgame) return;
     if (!upgraderPhase && pgMove == R.move && R.count == 3) return;
+    if (!upgraderPhase && match == 1 && level != 1)
+        pcs.innerHTML = "PC Spec";
     let pcMove = opt[Math.floor(Math.random()*3)];
     if (upgraderPhase) {
         P[pgMove]++;
         switch (pgMove) {
             case "rock":
-                document.getElementById("pr").value = P[pgMove];
+                specPR.value = P[pgMove];
                 break;
             case "paper": 
-                document.getElementById("pp").value = P[pgMove];
+                specPP.value = P[pgMove];
                 break;
             case "scissors": 
-                document.getElementById("ps").value = P[pgMove];
+                specPS.value = P[pgMove];
                 break;
         }
         upgraderPhase = !upgraderPhase;
+        setSpec();
         return;
     } else {
         vs(pgMove, P[pgMove], pcMove, C[pcMove]);
@@ -67,6 +79,7 @@ function play(pgMove) {
                     return; 
                 }
                 upgraderPhase = !upgraderPhase;
+                setSpec();
                 break;
             case 1: 
                 if (level == 4 && match == 1) { 
@@ -87,9 +100,14 @@ function play(pgMove) {
     if (match == 4) {
         match = 1;
         level++;
+        if (level == 4) {
+            lvl.value = "FINAL";
+            mtc.value = "MATCH";
+        }
         C["rock"]++;
         C["paper"]++;
         C["scissors"]++;
+        pcs.innerHTML = "PC Spec<br />(+1 All Next Turn)";
     }
     if (pgMove == R.move) 
         R.count++;
@@ -152,6 +170,24 @@ function setImag(pgMove, pcMove) {
     if (pgMove == "scissors" && pcMove == "scissors" && outcome == 2) battleF.src = "img/svs-l.png";
 }
 
+function setSpec() {
+    if (upgraderPhase) {
+        specPR.style.backgroundColor = "aqua";
+        specPP.style.backgroundColor = "aqua";
+        specPS.style.backgroundColor = "aqua";
+        specPR.style.color = "red";
+        specPP.style.color = "red";
+        specPS.style.color = "red";
+    } else {
+        specPR.style.backgroundColor = "black";
+        specPP.style.backgroundColor = "black";
+        specPS.style.backgroundColor = "black";
+        specPR.style.color = "aqua";
+        specPP.style.color = "aqua";
+        specPS.style.color = "aqua";
+    }
+}
+
 function setEndGame(victory) {
     const message = victory ? "You Win" : "You Lose"; 
     endgame = true;
@@ -168,23 +204,29 @@ function setNewGame() {
     upgraderPhase = false;
     endgame = false;
     outcome = 0;
+    R.move = "";
+    R.count = 0;
     P["rock"] = 0;
     P["paper"] = 0;
     P["scissors"] = 0;
     C["rock"] = 0;
     C["paper"] = 0;
     C["scissors"] = 0;
+    lvl.value = "Level 1";
+    mtc.value = "Match 1";
     newGame.innerHTML = "RPS-Game";
     updateGUI();
 }
 
 function updateGUI() {
-    document.getElementById("lvl").value = "Level " + level;
-    document.getElementById("mtc").value = "Match " + match;
-    document.getElementById("pr").value = P["rock"];
-    document.getElementById("pp").value = P["paper"];
-    document.getElementById("ps").value = P["scissors"];
-    document.getElementById("cr").value = C["rock"];
-    document.getElementById("cp").value = C["paper"];
-    document.getElementById("cs").value = C["scissors"];
+    if (lvl.value != "FINAL")
+        lvl.value = "Level " + level;
+    if (mtc.value != "MATCH")
+        mtc.value = "Match " + match;
+    specPR.value = P["rock"];
+    specPP.value = P["paper"];
+    specPS.value = P["scissors"];
+    specCR.value = C["rock"];
+    specCP.value = C["paper"];
+    specCS.value = C["scissors"];
 }
