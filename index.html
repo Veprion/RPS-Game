@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS-Game</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="grid">
+        <div class="grid-item">
+            <input id="lvl" type="text" value="Level 1" disabled>
+        </div>
+        <div class="grid-item">
+            <button id="newgame" class="titolo" type="text">RPS-Game</button>
+        </div>
+        <div class="grid-item">
+            <input id="mtc" type="text" value="Match 1" disabled>
+        </div>
+        <div class="grid-item">
+            <div class="inner-grid">
+                <div class="inner-grid-item a"><h3>Your Spec</h3></div>
+                <div class="inner-grid-item b"><img class="spec" src="img/rock.png" alt="rock"></div>
+                <div class="inner-grid-item c"><input id="pr" type="text" value="0" disabled></div>
+                <div class="inner-grid-item d"><img class="spec" src="img/paper.png" alt="paper"></div>
+                <div class="inner-grid-item e"><input id="pp" type="text" value="0" disabled></div>
+                <div class="inner-grid-item f"><img class="spec" src="img/scissors.png" alt="scissors"></div>
+                <div class="inner-grid-item g"><input id="ps" type="text" value="0" disabled></div>
+            </div>
+        </div>
+        <div class="grid-item">
+            <img id="p0" class="act" src="img/start.png" alt="start">
+        </div>
+        <div class="grid-item">
+            <div class="inner-grid">
+                <div class="inner-grid-item a"><h3>PC Spec</h3></div>
+                <div class="inner-grid-item b"><img class="spec" src="img/rock.png" alt="rock"></div>
+                <div class="inner-grid-item c"><input id="cr" type="text" value="0" disabled></div>
+                <div class="inner-grid-item d"><img class="spec" src="img/paper.png" alt="paper"></div>
+                <div class="inner-grid-item e"><input id="cp" type="text" value="0" disabled></div>
+                <div class="inner-grid-item f"><img class="spec" src="img/scissors.png" alt="scissors"></div>
+                <div class="inner-grid-item g"><input id="cs" type="text" value="0" disabled></div>
+            </div>            
+        </div>
+        <div class="grid-item">
+            <button id="b0"><img class="act" src="img/rock.png" alt="rock"></button>
+        </div>
+        <div class="grid-item">
+            <button id="b1"><img class="act" src="img/paper.png" alt="paper"></button>
+        </div>
+        <div class="grid-item">
+            <button id="b2"><img class="act" src="img/scissors.png" alt="scissors"></button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

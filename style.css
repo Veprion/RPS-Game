@@ -1,0 +1,113 @@
+body {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    width: clamp(100px, 68%, 700px);
+    aspect-ratio: 12/9;
+    border: solid 2px black;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 4fr 4fr;
+    place-items: center;
+}
+
+.grid-item {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border: solid 3px yellow;
+}
+
+button {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-color: orange;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: black;
+    color: aqua;
+    font-size: clamp(1rem, 60%, 3rem);
+    aspect-ratio: 2/1;
+}
+
+.titolo {
+    color: red;
+    font-size: clamp(1.2rem, 60%, 5rem);
+}
+
+h3 {
+    color: violet;
+    font-size: clamp(1rem, 60%, 3rem);
+    text-align: center;
+    aspect-ratio: 4/1;
+}
+
+.a {
+    grid-area: a;
+}
+.b {
+    grid-area: b;
+}
+.c {
+    grid-area: c;
+}
+.d {
+    grid-area: d;
+}
+.e {
+    grid-area: e;
+}
+.f {
+    grid-area: f;
+}
+.g {
+    grid-area: g;
+}
+
+.inner-grid {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    grid-template-columns: 50%;
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    place-items: center;
+    grid-template-areas:    "a a"
+                            "b c"
+                            "d e"
+                            "f g";   
+}
+
+.spec {
+    width: 100%;
+    aspect-ratio: 2/1;
+}
+
+.act {
+    width: 100%;
+    height: 100%;
+}
+
+/*.inner-grid-item {
+    display: block;
+}*/
