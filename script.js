@@ -36,7 +36,7 @@ newGame.addEventListener("click", () => setNewGame());
 
 function play(pgMove) {
     if (endgame) return;
-    if (R.count == 3) return;
+    if (pgMove == R.move && R.count == 3) return;
     let pcMove = opt[Math.floor(Math.random()*3)];
     if (upgraderPhase) {
         P[pgMove]++;
