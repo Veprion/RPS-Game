@@ -154,7 +154,7 @@ function setImag(pgMove, pcMove) {
 function setEndGame(victory) {
     const message = victory ? "You Win" : "You Lose"; 
     endgame = true;
-    newGame.innerHTML = message + "<br />-^-^-^-<br />NewGame";
+    newGame.innerHTML = message + "<br />-^-v-^-<br />NewGame";
     updateGUI();
     return;
 }
